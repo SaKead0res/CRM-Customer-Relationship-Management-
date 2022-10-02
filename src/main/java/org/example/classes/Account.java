@@ -1,6 +1,7 @@
-package org.example.Classes;
+package org.example.classes;
 
 import org.example.Enums.Industries;
+import org.example.classes.Opportunity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,6 @@ public class Account {
     private int employeeCount;
     private String city;
     private String country;
-    private List<Contact> contactList;
+    private List<org.example.Classes.Contact> contactList;
     private List<Opportunity> opportunityList;
 }
