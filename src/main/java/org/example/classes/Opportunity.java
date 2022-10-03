@@ -1,6 +1,7 @@
 package org.example.classes;
 
 import org.example.Enums.Product;
+import org.example.enums.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +12,16 @@ public class Opportunity {
     private int id;
     private Product product;
     private int quantity;
-    private org.example.Classes.Contact decisionMaker;
-    private org.example.Enums.Status status;
+    private String decisionMaker;
+    private Status status;
 
     static List<Opportunity> opportunityList = new ArrayList<>();
 
-    public Opportunity(int id, Product product, int quantity, org.example.Classes.Contact decisionMaker, org.example.Enums.Status status) {
+    public Opportunity(int id, Product product, int quantity, Contact decisionMaker, Status status) {
         setId(id);
         this.product = product;
         this.quantity = quantity;
-        this.decisionMaker = decisionMaker;
+        this.decisionMaker = decisionMaker.toString();
         this.status = status;
     }
 
@@ -52,40 +53,33 @@ public class Opportunity {
         this.quantity = quantity;
     }
 
-    public org.example.Classes.Contact getDecisionMaker() {
+    public String getDecisionMaker() {
         return decisionMaker;
     }
 
-    public void setDecisionMaker(org.example.Classes.Contact decisionMaker) {
+    public void setDecisionMaker(String decisionMaker) {
         this.decisionMaker = decisionMaker;
     }
 
-    public org.example.Enums.Status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(org.example.Enums.Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-//    public static Status opportunityInput() {
-//        //Create a Scanner to collect user input
-//        Scanner myScanner = new Scanner(System.in);
-//
-//        String userInput = myScanner.nextLine();
-//        return null;
-//    }
-
     public static void addOpportunity() {
         Opportunity opportunity = new Opportunity();
-        System.out.println("Introduce the product:");
-//        opportunity.setProduct(Navigate.input());
-        System.out.println("Introduce a quantity of product:");
-//        opportunity.setQuantity(Navigate.input());
-        System.out.println("Introduce a decision maker of the transaction:");
-//        opportunity.setDecisionMaker(Navigate.input());
-        System.out.println("Introduce a status of the opportunity:");
-//        opportunity.setStatus(Navigate.input());
+        Scanner input = new Scanner(System.in);
+        System.out.println("Introduce the interested product:");
+        opportunity.setProduct(Product.valueOf(input.nextLine()));
+        System.out.println("Introduce the interested quantity of product:");
+        opportunity.setQuantity(Integer.parseInt(input.nextLine()));
+//        System.out.println("Introduce a decision maker of the opportunity:");
+//        opportunity.setDecisionMaker(input.nextLine());
+//        System.out.println("Introduce a status of the opportunity:");
+//        opportunity.setStatus(Status.valueOf(input.nextLine()));
 
         System.out.println("\nThe new opportunity is created correctly.");
     }

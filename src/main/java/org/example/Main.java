@@ -1,5 +1,7 @@
 package org.example;
-import org.example.Classes.Navigate;
+
+import org.example.classes.Navigate;
+import org.example.classes.Opportunity;
 
 public class Main {
 

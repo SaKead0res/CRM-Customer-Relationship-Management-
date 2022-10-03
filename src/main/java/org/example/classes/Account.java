@@ -13,6 +13,6 @@ public class Account {
     private int employeeCount;
     private String city;
     private String country;
-    private List<org.example.Classes.Contact> contactList;
+    private List<Contact> contactList;
     private List<Opportunity> opportunityList;
 }
