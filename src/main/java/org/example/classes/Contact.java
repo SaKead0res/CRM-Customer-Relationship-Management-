@@ -64,25 +64,18 @@ public abstract class Contact extends Lead {
         this.city = city;
     }
 
-    public static List<Contact> getContactList() {
-        return contactList;
-    }
-
-    public static void setContactList(List<Contact> contactList) {
-        Contact.contactList = contactList;
-    }
-
-
 
     public static void ContactList() {
         Contact contact = null;
         Scanner input = new Scanner(System.in);
+        System.out.println("Please enter Industry : ");
+        contact.setIndustry(Status.valueOf(input.nextLine()));
+        System.out.println("Please enter your number of employees : ");
+        contact.setEmployeeCount(Integer.parseInt(input.nextLine()));
         System.out.println("Please enter City : ");
         contact.setCity(input.nextLine());
         System.out.println("Please enter Country : ");
         contact.setCountry(input.nextLine());
-        System.out.println("Please enter Industry : ");
-        contact.setIndustry(Status.valueOf(input.nextLine()));
         contactList.add(contact);
     }
 }

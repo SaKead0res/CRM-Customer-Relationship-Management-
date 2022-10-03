@@ -3,7 +3,7 @@ package org.example.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.Classes.Navigate.navigate;
+import static org.example.classes.Navigate.navigate;
 
 public class Lead {
 
@@ -18,13 +18,13 @@ public class Lead {
     public static void addLead(){
         Lead lead = new Lead();//Añadido junto con el constructor vacio porque sino lanzaba un error.
         System.out.println("Introduce a name:");
-        lead.setName(org.example.Classes.Navigate.input());
+        lead.setName(Navigate.input());
         System.out.println("Introduce a phone number:");
-        lead.setPhoneNumber(org.example.Classes.Navigate.input());
+        lead.setPhoneNumber(Navigate.input());
         System.out.println("Introduce an email address:");
-        lead.setEmailAddress(org.example.Classes.Navigate.input());
+        lead.setEmailAddress(Navigate.input());
         System.out.println("Introduce a company name:");
-        lead.setCompanyName(org.example.Classes.Navigate.input());
+        lead.setCompanyName(Navigate.input());
 
         leadList.add(lead);
         navigate();
@@ -43,6 +43,8 @@ public class Lead {
     }
 
     public static void convert(){
+        Contact.ContactList();
+      //  Opportunity.OpportunityList();
 
     }
 
