@@ -19,7 +19,7 @@ public abstract class Contact extends Lead {
 
     public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId, Status industry, int employeeCount, String country, String city) {
         super(name, phoneNumber, emailAddress, companyName);
-        this.contactId = contactId;
+        setContactId(contactId);
         this.industry = industry;
         this.employeeCount = employeeCount;
         this.country = country;
@@ -77,8 +77,6 @@ public abstract class Contact extends Lead {
     public static void ContactList() {
         Contact contact = null;
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter Contact Id : ");
-        contact.getContactId(input.nextLine());
         System.out.println("Please enter City : ");
         contact.setCity(input.nextLine());
         System.out.println("Please enter Country : ");
@@ -88,11 +86,7 @@ public abstract class Contact extends Lead {
         contactList.add(contact);
     }
 }
-    /*void displayContact(){
-        System.out.println("Contact ID:" + contactId);
-        System.out.println("City:" + city);
-        System.out.println("Country:" + country);
-    }*/
+
 
 
 
