@@ -1,7 +1,7 @@
 package org.example.classes;
 
-import org.example.Main;
-import org.example.enums.Status;
+import org.example.*;
+import org.example.Enums.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +64,7 @@ public abstract class Contact {
     }
 
     static List<Contact> contactList = new ArrayList<>();
+
     public static void ContactList() {
         Contact contact = null;
         Scanner input = new Scanner(System.in);
@@ -77,9 +78,29 @@ public abstract class Contact {
         contact.setIndustry(Status.valueOf(input.nextLine()));
         contactList.add(contact);
     }
+}
     /*void displayContact(){
         System.out.println("Contact ID:" + contactId);
         System.out.println("City:" + city);
         System.out.println("Country:" + country);
     }*/
-}
+
+
+/*public class Contact extends Lead {
+
+    private int contactId;
+    private static List<Contact> contactList;
+
+
+    public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId) {
+        super(name, phoneNumber, emailAddress, companyName);
+        setContactId(contactId);
+    }
+
+    public int getContactId() {
+        return contactId;
+    }
+    public void setContactId(int contactId) {
+        this.contactId = contactList.size();
+    }
+}*/

@@ -1,4 +1,7 @@
-package org.example.enums;
+package org.example.Enums;
 
 public enum Status {
+
+    OPEN, CLOSED_WON, CLOSED_LOST
+
 }
