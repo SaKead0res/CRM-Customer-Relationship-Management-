@@ -1,34 +1,35 @@
 package org.example.classes;
 
-import org.example.*;
 import org.example.Enums.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public abstract class Contact {
+public abstract class Contact extends Lead {
 
-    private String contactId;
+    private int contactId;
     private Status industry;
     private int employeeCount;
     private String country;
     private String city;
 
-    public Contact(String contactId, Status industry, int employeeCount, String country, String city) {
+   //private static List<Contact> contactList;
+    static List<Contact> contactList = new ArrayList<>();
+
+    public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId, Status industry, int employeeCount, String country, String city) {
+        super(name, phoneNumber, emailAddress, companyName);
         this.contactId = contactId;
         this.industry = industry;
         this.employeeCount = employeeCount;
         this.country = country;
         this.city = city;
     }
-
-    public String getContactId() {
+    public int getContactId(String s) {
         return contactId;
     }
-
-    public void setContactId(String contactId) {
-        this.contactId = contactId;
+    public void setContactId(int contactId) {
+        this.contactId = contactList.size();
     }
 
     public Status getIndustry() {
@@ -63,13 +64,21 @@ public abstract class Contact {
         this.city = city;
     }
 
-    static List<Contact> contactList = new ArrayList<>();
+    public static List<Contact> getContactList() {
+        return contactList;
+    }
+
+    public static void setContactList(List<Contact> contactList) {
+        Contact.contactList = contactList;
+    }
+
+
 
     public static void ContactList() {
         Contact contact = null;
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter Contact Id : ");
-        contact.setContactId(input.nextLine());
+        contact.getContactId(input.nextLine());
         System.out.println("Please enter City : ");
         contact.setCity(input.nextLine());
         System.out.println("Please enter Country : ");
@@ -86,21 +95,4 @@ public abstract class Contact {
     }*/
 
 
-/*public class Contact extends Lead {
 
-    private int contactId;
-    private static List<Contact> contactList;
-
-
-    public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId) {
-        super(name, phoneNumber, emailAddress, companyName);
-        setContactId(contactId);
-    }
-
-    public int getContactId() {
-        return contactId;
-    }
-    public void setContactId(int contactId) {
-        this.contactId = contactList.size();
-    }
-}*/

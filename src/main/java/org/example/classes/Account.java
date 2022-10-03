@@ -1,7 +1,6 @@
-package org.example.Classes;
+package org.example.classes;
 
 import org.example.Enums.Industries;
-
 import java.util.ArrayList;
 import java.util.List;
 
