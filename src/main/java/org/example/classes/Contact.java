@@ -9,21 +9,21 @@ import java.util.Scanner;
 public abstract class Contact extends Lead {
 
     private int contactId;
-    private Status industry;
+   /* private Status industry;
     private int employeeCount;
     private String country;
-    private String city;
+    private String city;*/
 
    //private static List<Contact> contactList;
     static List<Contact> contactList = new ArrayList<>();
 
-    public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId, Status industry, int employeeCount, String country, String city) {
+    public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId) {
         super(name, phoneNumber, emailAddress, companyName);
         setContactId(contactId);
-        this.industry = industry;
+       /* this.industry = industry;
         this.employeeCount = employeeCount;
         this.country = country;
-        this.city = city;
+        this.city = city;*/
     }
     public int getContactId(String s) {
         return contactId;
@@ -32,42 +32,16 @@ public abstract class Contact extends Lead {
         this.contactId = contactList.size();
     }
 
-    public Status getIndustry() {
-        return industry;
-    }
 
-    public void setIndustry(Status industry) {
-        this.industry = industry;
-    }
-
-    public int getEmployeeCount() {
-        return employeeCount;
-    }
-
-    public void setEmployeeCount(int employeeCount) {
-        this.employeeCount = employeeCount;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-
-    public static void ContactList() {
+//name, phoneNumber, emailAddress, companyName)
+    public static void ContactList(Lead lead) {
         Contact contact = null;
-        Scanner input = new Scanner(System.in);
+        contact.setName(lead.getName());
+        contact.setPhoneNumber(lead.getPhoneNumber());
+        contact.setEmailAddress(lead.getEmailAddress());
+        contact.setCompanyName(lead.getCompanyName());
+
+       /* Scanner input = new Scanner(System.in);
         System.out.println("Please enter Industry : ");
         contact.setIndustry(Status.valueOf(input.nextLine()));
         System.out.println("Please enter your number of employees : ");
@@ -75,8 +49,9 @@ public abstract class Contact extends Lead {
         System.out.println("Please enter City : ");
         contact.setCity(input.nextLine());
         System.out.println("Please enter Country : ");
-        contact.setCountry(input.nextLine());
+        contact.setCountry(input.nextLine());*/
         contactList.add(contact);
+
     }
 }
 
