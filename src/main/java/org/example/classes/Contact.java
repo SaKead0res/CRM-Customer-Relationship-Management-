@@ -1,23 +1,32 @@
 package org.example.classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Contact extends Lead {
+public abstract class Contact extends Lead {
 
     private int contactId;
-    private static List<Contact> contactList;
-
-
     public Contact(String name, String phoneNumber, String emailAddress, String companyName, int contactId) {
         super(name, phoneNumber, emailAddress, companyName);
         setContactId(contactId);
     }
-
-    public int getContactId() {
+    public int getContactId(String s) {
         return contactId;
     }
     public void setContactId(int contactId) {
-        this.contactId = contactList.size();
+        this.contactId = contactId;
+    }
+
+
+    public static Contact createContact(Lead lead) {
+        Contact contact = null;
+        contact.setName(lead.getName());
+        contact.setPhoneNumber(lead.getPhoneNumber());
+        contact.setEmailAddress(lead.getEmailAddress());
+        contact.setCompanyName(lead.getCompanyName());
+
+        return contact;
+
     }
 }
+
+
+
+
