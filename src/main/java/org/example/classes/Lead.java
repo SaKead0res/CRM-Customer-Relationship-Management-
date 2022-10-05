@@ -43,7 +43,7 @@ public class Lead {
     }
 
     public static void convert(){
-        Contact.ContactList();
+
       //  Opportunity.OpportunityList();
 
     }
