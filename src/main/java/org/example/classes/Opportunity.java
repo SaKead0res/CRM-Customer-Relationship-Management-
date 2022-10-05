@@ -69,8 +69,47 @@ public class Opportunity {
         this.status = status;
     }
 
-    public static void addOpportunity() {
+    /*public static void addOpportunity() {
+
         Opportunity opportunity = new Opportunity();
+        try {
+            opportunity = org.example.Enums.Commands.valueOf( input() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "This command doesn't exists. Try again or type <help>." );
+            navigate();
+        }
+
+        switch (command) {
+            case NEWLEAD:
+                Lead.addLead();
+                break;
+            case SHOWLEADS:
+                Lead.showLeads();
+                break;
+            case LOOKUPLEAD:
+                Lead.lookupLead();
+                break;
+            case CONVERT:
+                Lead.convert();
+                break;
+            case CLOSED_WON:
+                Lead.closeWon();
+                break;
+            case CLOSED_LOST:
+                Lead.closeLost();
+                break;
+            case HELP:
+                help();
+                break;
+            case EXIT:
+                System.exit(0);
+                break;
+            default:
+                break;
+        }
+        navigate();
         Scanner input = new Scanner(System.in);
         System.out.println("Introduce the interested product:");
         opportunity.setProduct(Product.valueOf(input.nextLine()));
@@ -81,6 +120,7 @@ public class Opportunity {
 //        System.out.println("Introduce a status of the opportunity:");
 //        opportunity.setStatus(Status.valueOf(input.nextLine()));
 
+        opportunityList.add(opportunity);
         System.out.println("\nThe new opportunity is created correctly.");
     }
 }
