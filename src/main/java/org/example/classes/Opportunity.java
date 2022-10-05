@@ -1,79 +1,68 @@
 package org.example.classes;
 
-import org.example.Enums.Product;
+import org.example.enums.Product;
 import org.example.enums.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Opportunity {
+import static org.example.classes.Navigate.navigate;
 
+public class Opportunity {
     private int id;
     private Product product;
     private int quantity;
-    private String decisionMaker;
+    private static Contact decisionMaker;
     private Status status;
-
     static List<Opportunity> opportunityList = new ArrayList<>();
-
     public Opportunity(int id, Product product, int quantity, Contact decisionMaker, Status status) {
         setId(id);
         this.product = product;
         this.quantity = quantity;
-        this.decisionMaker = decisionMaker.toString();
+        this.decisionMaker = decisionMaker;
         this.status = status;
     }
-
     public Opportunity() {
-
     }
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = opportunityList.size();
     }
-
     public Product getProduct() {
         return product;
     }
-
     public void setProduct(Product product) {
         this.product = product;
     }
-
     public int getQuantity() {
         return quantity;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public String getDecisionMaker() {
+    public Contact getDecisionMaker() {
         return decisionMaker;
     }
-
-    public void setDecisionMaker(String decisionMaker) {
+    public void setDecisionMaker(Contact decisionMaker) {
         this.decisionMaker = decisionMaker;
     }
-
     public Status getStatus() {
         return status;
     }
-
     public void setStatus(Status status) {
         this.status = status;
     }
 
-    /*public static void addOpportunity() {
+    public static void addOpportunity() {
 
         Opportunity opportunity = new Opportunity();
-        try {
-            opportunity = org.example.Enums.Commands.valueOf( input() );//esta funcion intenta dar a la variable command el valor de una String(input())
+
+        /*try {
+            opportunity = Commands.valueOf( input() );//esta funcion intenta dar a la variable command el valor de una String(input())
 //                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
 //                                                  clase Enum Commands.
         } catch ( IllegalArgumentException e ) {
@@ -110,18 +99,68 @@ public class Opportunity {
                 break;
         }
         navigate();
+        */
+
         Scanner input = new Scanner(System.in);
+        System.out.println("Introduce the Lead Id to convert:");
+        opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(Integer.parseInt(input.nextLine()))));
         System.out.println("Introduce the interested product:");
         opportunity.setProduct(Product.valueOf(input.nextLine()));
         System.out.println("Introduce the interested quantity of product:");
         opportunity.setQuantity(Integer.parseInt(input.nextLine()));
-//        System.out.println("Introduce a decision maker of the opportunity:");
-//        opportunity.setDecisionMaker(input.nextLine());
-//        System.out.println("Introduce a status of the opportunity:");
-//        opportunity.setStatus(Status.valueOf(input.nextLine()));
-
-        opportunityList.add(opportunity);
+        opportunity.setStatus(Status.OPEN);
         System.out.println("\nThe new opportunity is created correctly.");
+        System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
+                " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                " | Interested Units: " + opportunity.getQuantity() + " }\n");
+        opportunityList.add(opportunity);
+
+        navigate();
+
     }
+
+    public static void closedWon() {
+
+        Opportunity opportunity = new Opportunity();
+        Scanner input = new Scanner(System.in);
+        opportunityList.get(input.nextInt());
+        opportunity.setStatus(Status.CLOSED_WON);
+        System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
+        navigate();
+    }
+
+    public static void closedLost(){
+
+        Opportunity opportunity = new Opportunity();
+        Scanner input = new Scanner(System.in);
+        opportunityList.get(input.nextInt());
+        opportunity.setStatus(Status.CLOSED_LOST);
+        System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
+        navigate();
+    }
+
+    public static void lookupOpportunity(){
+
+        Opportunity opportunity = new Opportunity();
+        Scanner input = new Scanner(System.in);
+        opportunityList.get(input.nextInt());
+        System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
+                " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                " | Interested Units: " + opportunity.getQuantity() + " }\n");
+        navigate();
+    }
+
+    public static void showOpportunities(){
+
+        System.out.println("\nOPPORTUNITY LIST\n===================");
+        for (Opportunity opportunity : opportunityList){
+            System.out.println("Opportunity { " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
+                    " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                    " | Interested Units: " + opportunity.getQuantity() + " }");
+            System.out.println("====================");
+        }
+        System.out.println("END OF LIST\n");
+    }
+
 }
 
