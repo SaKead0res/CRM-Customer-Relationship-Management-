@@ -1,5 +1,5 @@
 package org.example;
-import org.example.Classes.Navigate;
+import org.example.classes.Navigate;
 
 import java.util.ArrayList;
 import java.util.Scanner;
