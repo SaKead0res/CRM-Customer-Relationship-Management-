@@ -10,7 +10,7 @@ public class Navigate {
 
     public static void navigate(){
 
-        System.out.println("Please, enter a command:");
+        System.out.print("Please, enter a command: ");
 
         Commands command = null;
         try {

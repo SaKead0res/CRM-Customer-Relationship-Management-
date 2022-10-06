@@ -23,18 +23,18 @@ public class Lead {
     public static void addLead(){
         Lead lead = new Lead();//Añadido junto con el constructor vacio porque sino lanzaba un error.
 
-        System.out.println("Introduce a name:");
+        System.out.print("- Introduce a Name: ");
         lead.setName(Navigate.input());
-        System.out.println("Introduce a phone number:");
+        System.out.print("- Introduce a Phone Number: ");
         lead.setPhoneNumber(Navigate.input());
-        System.out.println("Introduce an email address:");
+        System.out.print("- Introduce an Email: ");
         lead.setEmailAddress(Navigate.input());
-        System.out.println("Introduce a company name:");
+        System.out.print("- Introduce a Company Name: ");
         lead.setCompanyName(Navigate.input());
 
         leadList.add(lead);
         System.out.println("\nThe new " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " is created correctly.");
-        System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone Number: " + lead.phoneNumber +
+        System.out.println("Lead { Id: " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
         navigate();
     }
@@ -42,7 +42,7 @@ public class Lead {
     public static void showLeads(){
         System.out.println("\nLEAD LIST\n===================");
         for (Lead lead : leadList){
-            System.out.println("Lead { " + lead.id + " | Name: " + lead.name + " | Phone Number: " + lead.phoneNumber +
+            System.out.println("Lead { " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                     " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }");
             System.out.println("====================");
         }
@@ -53,9 +53,9 @@ public class Lead {
 
         Lead lead = new Lead();
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to LOOK:");
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to LOOK: ");
         leadList.get(input.nextInt());
-        System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone Number: " + lead.phoneNumber +
+        System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
         navigate();
     }

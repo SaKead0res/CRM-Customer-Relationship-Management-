@@ -102,15 +102,15 @@ public class Opportunity {
         */
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce the Lead Id to convert:");
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to convert:");
         opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(Integer.parseInt(input.nextLine()))));
-        System.out.println("Introduce the interested product:");
+        System.out.print("- Introduce the Interested Product:");
         opportunity.setProduct(Product.valueOf(input.nextLine()));
-        System.out.println("Introduce the interested quantity of product:");
+        System.out.print("- Introduce the Interested Quantity of product:");
         opportunity.setQuantity(Integer.parseInt(input.nextLine()));
         opportunity.setStatus(Status.OPEN);
         System.out.println("\nThe new " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " is created correctly.");
-        System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
+        System.out.println("Opportunity {ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
         opportunityList.add(opportunity);
@@ -124,6 +124,7 @@ public class Opportunity {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to CLOSE :");
         opportunityList.get(input.nextInt());
         opportunity.setStatus(Status.CLOSED_WON);
         System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
@@ -134,6 +135,7 @@ public class Opportunity {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to CLOSE :");
         opportunityList.get(input.nextInt());
         opportunity.setStatus(Status.CLOSED_LOST);
         System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
@@ -144,7 +146,7 @@ public class Opportunity {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to LOOK:");
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to LOOK: ");
         opportunityList.get(input.nextInt());
         System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +

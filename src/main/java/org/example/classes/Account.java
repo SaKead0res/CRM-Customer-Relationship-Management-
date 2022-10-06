@@ -109,13 +109,13 @@ public class Account {
         */
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Please enter Industry : ");
+        System.out.print("- Please enter Industry : ");
         account.setIndustry(Industries.valueOf(input.nextLine()));
-        System.out.println("Please enter your number of employees : ");
+        System.out.print("- Please enter your Number of Employees : ");
         account.setEmployeeCount(Integer.parseInt(input.nextLine()));
-        System.out.println("Please enter City : ");
+        System.out.print("- Please enter City : ");
         account.setCity(input.nextLine());
-        System.out.println("Please enter Country : ");
+        System.out.print("- Please enter Country : ");
         account.setCountry(input.nextLine());
 
         System.out.println("\nThe new " + (char)27 + "[33m" + "ACCOUNT" + (char)27 + "[0m" + " is created correctly.");
@@ -126,7 +126,7 @@ public class Account {
 
         System.out.println("\nCONTACTS OF THE ACCOUNT\n===================");
         for (Contact contact : accountContactList){
-            System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone Number: " +
+            System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone: " +
                         contact.getPhoneNumber() + " | Email: " + contact.getEmailAddress() + " }");
             System.out.println("====================");
             }
@@ -147,7 +147,7 @@ public class Account {
 
         Account account = new Account();
         Scanner input = new Scanner(System.in);
-        System.out.println("Introduce the " + (char)27 + "[33m" + "ACCOUNT" + (char)27 + "[0m" + " Id to LOOK:");
+        System.out.print("- Introduce the " + (char)27 + "[33m" + "ACCOUNT" + (char)27 + "[0m" + " Id to LOOK: ");
         accountList.get(input.nextInt());
         System.out.println("Account {ID: " + account.getId() + " | Company: " +
                 accountContactList.get(0).getCompanyName() + " | Industry: " + account.getIndustry() +
@@ -156,7 +156,7 @@ public class Account {
 
         System.out.println("\nCONTACTS OF THE ACCOUNT\n===================");
         for (Contact contact : accountContactList){
-            System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone Number: " +
+            System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone: " +
                     contact.getPhoneNumber() + " | Email: " + contact.getEmailAddress() + " | Company Name: " +
                     contact.getCompanyName() + " }");
             System.out.println("====================");
