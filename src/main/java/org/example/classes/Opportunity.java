@@ -13,9 +13,9 @@ public class Opportunity {
     private int id;
     private Product product;
     private int quantity;
-    private static Contact decisionMaker;
+    static Contact decisionMaker;
     private Status status;
-    static List<Opportunity> opportunityList = new ArrayList<>();
+    static List<Opportunity> opportunityList = new ArrayList<>(); // Los ID's no funcionan. Siempre son 0
     public Opportunity(int id, Product product, int quantity, Contact decisionMaker, Status status) {
         setId(id);
         this.product = product;
@@ -109,13 +109,14 @@ public class Opportunity {
         System.out.println("Introduce the interested quantity of product:");
         opportunity.setQuantity(Integer.parseInt(input.nextLine()));
         opportunity.setStatus(Status.OPEN);
-        System.out.println("\nThe new opportunity is created correctly.");
+        System.out.println("\nThe new " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " is created correctly.");
         System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
         opportunityList.add(opportunity);
+        Account.accountOpportunityList.add(opportunity);
 
-        navigate();
+        Account.addAccount();
 
     }
 
@@ -143,6 +144,7 @@ public class Opportunity {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
+        System.out.println("Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to LOOK:");
         opportunityList.get(input.nextInt());
         System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +

@@ -14,17 +14,16 @@ public class Contact extends Lead {
 
 
     public static Contact createContact(Lead lead) {
+
         Contact contact = new Contact();
+
         contact.setName(lead.getName());
         contact.setPhoneNumber(lead.getPhoneNumber());
         contact.setEmailAddress(lead.getEmailAddress());
         contact.setCompanyName(lead.getCompanyName());
         Lead.leadList.remove(lead.getId());
-        return contact;
+        Account.accountContactList.add(contact);
 
+        return contact;
     }
 }
-
-
-
-

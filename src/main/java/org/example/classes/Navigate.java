@@ -10,7 +10,7 @@ public class Navigate {
 
     public static void navigate(){
 
-        System.out.println("Please, enter a command");
+        System.out.println("Please, enter a command:");
 
         Commands command = null;
         try {
@@ -66,22 +66,22 @@ public class Navigate {
     }
 
     public static void help(){
-        System.out.println("List of commands available:");
-        System.out.println("NEWLEAD:");
-        System.out.println("SHOWLEADS:");
-        System.out.println("SHOWOPPORTUNITIES:");
-        System.out.println("SHOWACCOUNTS:");
-        System.out.println("LOOKUPLEAD:");
-        System.out.println("LOOKUPOPPORTUNITY:");
-        System.out.println("LOOKUPACCOUNT:");
-        System.out.println("CONVERT:");
-        System.out.println("CLOSED_WON:");
-        System.out.println("CLOSED_LOST:");
+        System.out.println("List of " + (char)27 + "[33m" + "COMMANDS" + (char)27 + "[0m" + " available:");
+        System.out.print("{   NEWLEAD   } ");
+        System.out.print("{  SHOWLEADS   } ");
+        System.out.print("{  CONVERT   } ");
+        System.out.print("{ SHOWOPPORTUNITIES } ");
+        System.out.println("{  CLOSED_WON   } ");
+        System.out.print("{ CLOSED_LOST } ");
+        System.out.print("{ SHOWACCOUNTS } ");
+        System.out.print("{ LOOKUPLEAD } ");
+        System.out.print("{ LOOKUPOPPORTUNITY } ");
+        System.out.print("{ LOOKUPACCOUNT } ");
+        System.out.println("\n=================");
         navigate();
     }
 
     public static String input() {
-        //Create a Scanner to collect user input
         Scanner myScanner = new Scanner(System.in);
 
         String userInput = myScanner.nextLine();

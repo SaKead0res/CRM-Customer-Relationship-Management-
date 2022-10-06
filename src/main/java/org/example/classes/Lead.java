@@ -17,7 +17,7 @@ public class Lead {
     private String emailAddress;
     private String companyName;
 
-    public static List<Lead> leadList = new ArrayList<>();//Lo mismo que en el comentario de abajo
+    public static List<Lead> leadList = new ArrayList<>(); // Los ID's no funcionan. Siempre son 0
 
 
     public static void addLead(){
@@ -33,7 +33,7 @@ public class Lead {
         lead.setCompanyName(Navigate.input());
 
         leadList.add(lead);
-        System.out.println("\nThe new Lead is created correctly.");
+        System.out.println("\nThe new " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " is created correctly.");
         System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone Number: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
         navigate();
@@ -53,6 +53,7 @@ public class Lead {
 
         Lead lead = new Lead();
         Scanner input = new Scanner(System.in);
+        System.out.println("Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to LOOK:");
         leadList.get(input.nextInt());
         System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone Number: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
