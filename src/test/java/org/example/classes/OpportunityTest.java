@@ -16,10 +16,10 @@ public class OpportunityTest {
             "Movistar");
 
     @Test
-    @DisplayName("")
-    void validate_inputCheck() {
+    @DisplayName("Check that NEWLEAD works correctly.")
+    void checkNewLead_OK() {
         Scanner keyboard = mock(Scanner.class);
-        when(keyboard.nextLine()).thenReturn("Jose", "");
+        when(keyboard.nextLine()).thenReturn("1");
 
 //        assertEquals()
     }
