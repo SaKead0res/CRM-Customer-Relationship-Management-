@@ -20,7 +20,7 @@ public class Lead {
     public static List<Lead> leadList = new ArrayList<>(); // Los ID's no funcionan. Siempre son 0
 
 
-    public static void addLead(){
+    public static void addLead() throws InterruptedException {
         Lead lead = new Lead();//Añadido junto con el constructor vacio porque sino lanzaba un error.
 
         System.out.print("- Introduce a Name: ");
@@ -49,7 +49,7 @@ public class Lead {
         System.out.println("END OF LIST\n");
     }
 
-    public static void lookupLead(){
+    public static void lookupLead() throws InterruptedException {
 
         Lead lead = new Lead();
         Scanner input = new Scanner(System.in);
@@ -60,7 +60,7 @@ public class Lead {
         navigate();
     }
 
-    public static void convert(){
+    public static void convert() throws InterruptedException {
 
         Opportunity.addOpportunity();
 

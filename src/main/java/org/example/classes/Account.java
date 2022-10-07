@@ -1,4 +1,3 @@
-
 package org.example.classes;
 
 import org.example.enums.Industries;
@@ -8,6 +7,7 @@ import org.example.enums.Status;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import static org.example.classes.Navigate.navigate;
 
@@ -68,55 +68,42 @@ public class Account {
     }
 
 
-    public static void addAccount() {
+    public static void addAccount() throws InterruptedException {
 
         Account account = new Account();
-
-        /*try {
-            opportunity = Commands.valueOf( input() );//esta funcion intenta dar a la variable command el valor de una String(input())
-//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
-//                                                  clase Enum Commands.
-        } catch ( IllegalArgumentException e ) {
-            System.err.println( "This command doesn't exists. Try again or type <help>." );
-            navigate();
-        }
-
-        switch (command) {
-            case NEWLEAD:
-                Lead.addLead();
-                break;
-            case SHOWLEADS:
-                Lead.showLeads();
-                break;
-            case LOOKUPLEAD:
-                Lead.lookupLead();
-                break;
-            case CONVERT:
-                Lead.convert();
-                break;
-            case CLOSED_WON:
-                Lead.closeWon();
-                break;
-            case CLOSED_LOST:
-                Lead.closeLost();
-                break;
-            case HELP:
-                help();
-                break;
-            case EXIT:
-                System.exit(0);
-                break;
-            default:
-                break;
-        }
-        navigate();
-        */
+        Integer id;
 
         Scanner input = new Scanner(System.in);
         System.out.print("- Please enter Industry : ");
-        account.setIndustry(Industries.valueOf(input.nextLine()));
+
+        Industries industry = null;
+
+        try {
+            industry = Industries.valueOf( input.nextLine().toUpperCase() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "This industry doesn't exists." );
+            TimeUnit.MILLISECONDS.sleep(1000);
+            addAccount();
+        }
+
+        account.setIndustry(industry);
         System.out.print("- Please enter your Number of Employees : ");
-        account.setEmployeeCount(Integer.parseInt(input.nextLine()));
+
+        Integer numberOfEmployees = -1;
+
+        try {
+            numberOfEmployees = Integer.parseInt( input.nextLine() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "Wrong Number of Employees format." );
+            TimeUnit.MILLISECONDS.sleep(1000);
+            addAccount();
+        }
+
+        account.setEmployeeCount(numberOfEmployees);
         System.out.print("- Please enter City : ");
         account.setCity(input.nextLine());
         System.out.print("- Please enter Country : ");
@@ -131,9 +118,9 @@ public class Account {
         System.out.println("\nCONTACTS OF THE ACCOUNT\n===================");
         for (Contact contact : accountContactList){
             System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone: " +
-                        contact.getPhoneNumber() + " | Email: " + contact.getEmailAddress() + " }");
+                    contact.getPhoneNumber() + " | Email: " + contact.getEmailAddress() + " }");
             System.out.println("====================");
-            }
+        }
 
         System.out.println("\nOPPORTUNITIES OF THE ACCOUNT\n===================");
         for (Opportunity opportunity : accountOpportunityList) {
@@ -146,8 +133,8 @@ public class Account {
         accountList.add(account);
 
         navigate();
-}
-    public static void lookupAccount() {
+    }
+    public static void lookupAccount() throws InterruptedException {
 
         Account account = new Account();
         Scanner input = new Scanner(System.in);
@@ -176,7 +163,7 @@ public class Account {
         navigate();
     }
 
-    public static void showAccounts(){
+    public static void showAccounts() throws InterruptedException {
 
         System.out.println("\nACCOUNT LIST\n===================");
         for (Account account : accountList){
@@ -190,5 +177,3 @@ public class Account {
         navigate();
     }
 }
-
-

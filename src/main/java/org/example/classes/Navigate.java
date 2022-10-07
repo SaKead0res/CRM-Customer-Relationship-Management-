@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Navigate {
 
-    public static void navigate(){
+    public static void navigate() throws InterruptedException {
 
         System.out.print("Please, enter a command: ");
 
@@ -65,7 +65,7 @@ public class Navigate {
         navigate();
     }
 
-    public static void help(){
+    public static void help() throws InterruptedException {
         System.out.println("List of " + (char)27 + "[33m" + "COMMANDS" + (char)27 + "[0m" + " available:");
         System.out.print("{   NEWLEAD   } ");
         System.out.print("{  SHOWLEADS   } ");
@@ -101,6 +101,6 @@ public class Navigate {
 //        }
 //        String upperCaseInput = userInput.toUpperCase().replace(" ", "");
 //        return inputFirstPart.toUpperCase();
-        return userInput;
+        return userInput.toUpperCase();
     }
 }
