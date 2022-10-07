@@ -6,6 +6,7 @@ import org.example.enums.Status;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import static org.example.classes.Navigate.navigate;
 
@@ -57,57 +58,53 @@ public class Opportunity {
         this.status = status;
     }
 
-    public static void addOpportunity() {
+    public static void addOpportunity() throws InterruptedException {
 
         Opportunity opportunity = new Opportunity();
-
-        /*try {
-            opportunity = Commands.valueOf( input() );//esta funcion intenta dar a la variable command el valor de una String(input())
-//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
-//                                                  clase Enum Commands.
-        } catch ( IllegalArgumentException e ) {
-            System.err.println( "This command doesn't exists. Try again or type <help>." );
-            navigate();
-        }
-
-        switch (command) {
-            case NEWLEAD:
-                Lead.addLead();
-                break;
-            case SHOWLEADS:
-                Lead.showLeads();
-                break;
-            case LOOKUPLEAD:
-                Lead.lookupLead();
-                break;
-            case CONVERT:
-                Lead.convert();
-                break;
-            case CLOSED_WON:
-                Lead.closeWon();
-                break;
-            case CLOSED_LOST:
-                Lead.closeLost();
-                break;
-            case HELP:
-                help();
-                break;
-            case EXIT:
-                System.exit(0);
-                break;
-            default:
-                break;
-        }
-        navigate();
-        */
+        Integer id = null;
 
         Scanner input = new Scanner(System.in);
         System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to convert:");
-        opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(Integer.parseInt(input.nextLine()))));
+
+        try {
+            id = Integer.parseInt( input.nextLine() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "Wrong ID format." );
+            TimeUnit.MILLISECONDS.sleep(1000);
+            addOpportunity();
+        }
+        opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(id)));
         System.out.print("- Introduce the Interested Product:");
-        opportunity.setProduct(Product.valueOf(input.nextLine()));
+
+        Product product = null;
+
+        try {
+            product = Product.valueOf( input.nextLine().toUpperCase() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "This Product doesn't exists" );
+            TimeUnit.MILLISECONDS.sleep(1000);
+            addOpportunity();
+        }
+        opportunity.setProduct(product);
         System.out.print("- Introduce the Interested Quantity of product:");
-        opportunity.setQuantity(Integer.parseInt(input.nextLine()));
+
+        Integer quantity = -1;
+
+        try {
+            quantity = Integer.parseInt( input.nextLine() );//esta funcion intenta dar a la variable command el valor de una String(input())
+//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+//                                                  clase Enum Commands.
+        } catch ( IllegalArgumentException e ) {
+            System.err.println( "Wrong quantity format." );
+            TimeUnit.MILLISECONDS.sleep(1000);
+            addOpportunity();
+        }
+
+        opportunity.setQuantity(quantity);
         opportunity.setStatus(Status.OPEN);
         System.out.println("\nThe new " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " is created correctly.");
         System.out.println("Opportunity {ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
@@ -120,7 +117,7 @@ public class Opportunity {
 
     }
 
-    public static void closedWon() {
+    public static void closedWon() throws InterruptedException {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
@@ -131,7 +128,7 @@ public class Opportunity {
         navigate();
     }
 
-    public static void closedLost(){
+    public static void closedLost() throws InterruptedException {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
@@ -142,7 +139,7 @@ public class Opportunity {
         navigate();
     }
 
-    public static void lookupOpportunity(){
+    public static void lookupOpportunity() throws InterruptedException {
 
         Opportunity opportunity = new Opportunity();
         Scanner input = new Scanner(System.in);
@@ -167,4 +164,3 @@ public class Opportunity {
     }
 
 }
-
