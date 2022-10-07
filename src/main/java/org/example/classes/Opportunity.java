@@ -110,7 +110,11 @@ public class Opportunity {
         System.out.println("Opportunity {ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
+        opportunity.setId(opportunityList.size());
         opportunityList.add(opportunity);
+        for (Opportunity o : opportunityList){
+            System.out.println(o.getId());
+        }
         Account.accountOpportunityList.add(opportunity);
 
         Account.addAccount();
