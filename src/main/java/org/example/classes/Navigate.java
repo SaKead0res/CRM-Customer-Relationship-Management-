@@ -1,6 +1,6 @@
 package org.example.classes;
 
-import org.example.Enums.Commands;
+import org.example.enums.Commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Navigate {
 
     public static void navigate(){
 
-        System.out.println("Please, enter a command");
+        System.out.print("Please, enter a command: ");
 
         Commands command = null;
         try {
@@ -29,17 +29,29 @@ public class Navigate {
             case SHOWLEADS:
                 Lead.showLeads();
                 break;
+            case SHOWOPPORTUNITIES:
+                Opportunity.showOpportunities();
+                break;
+            case SHOWACCOUNTS:
+                Account.showAccounts();
+                break;
             case LOOKUPLEAD:
                 Lead.lookupLead();
+                break;
+            case LOOKUPACCOUNT:
+                Account.lookupAccount();
+                break;
+            case LOOKUPOPPORTUNITY:
+                Opportunity.lookupOpportunity();
                 break;
             case CONVERT:
                 Lead.convert();
                 break;
             case CLOSED_WON:
-                Lead.closeWon();
+                Opportunity.closedWon();
                 break;
             case CLOSED_LOST:
-                Lead.closeLost();
+                Opportunity.closedLost();
                 break;
             case HELP:
                 help();
@@ -54,36 +66,41 @@ public class Navigate {
     }
 
     public static void help(){
-        System.out.println("List of commands available:");
-        System.out.println("NEWLEAD:");
-        System.out.println("SHOWLEADS:");
-        System.out.println("LOOKUPLEAD:");
-        System.out.println("CONVERT:");
-        System.out.println("CLOSED_WON:");
-        System.out.println("CLOSED_LOST:");
+        System.out.println("List of " + (char)27 + "[33m" + "COMMANDS" + (char)27 + "[0m" + " available:");
+        System.out.print("{   NEWLEAD   } ");
+        System.out.print("{  SHOWLEADS   } ");
+        System.out.print("{  CONVERT   } ");
+        System.out.print("{ SHOWOPPORTUNITIES } ");
+        System.out.println("{  CLOSED_WON   } ");
+        System.out.print("{ CLOSED_LOST } ");
+        System.out.print("{ SHOWACCOUNTS } ");
+        System.out.print("{ LOOKUPLEAD } ");
+        System.out.print("{ LOOKUPOPPORTUNITY } ");
+        System.out.print("{ LOOKUPACCOUNT } ");
+        System.out.println("\n=================");
         navigate();
     }
 
     public static String input() {
-        //Create a Scanner to collect user input
         Scanner myScanner = new Scanner(System.in);
 
         String userInput = myScanner.nextLine();
-
-//        PROBANDO LOOKUPLEADID
-
-        List<String> inputArray = new ArrayList<>(List.of(userInput.trim().split(" ")));
-        String inputFirstPart = inputArray.get(0) + inputArray.get(1);
-        int id;
-        System.out.println(inputFirstPart);
-//        if (Integer.parseInt(inputArray.get(inputArray.size() - 1)))
-        try{
-            id = Integer.parseInt(inputArray.get(inputArray.size() - 1));
-        } catch (IllegalArgumentException e){
-            System.err.println("Wrong ID format. Try again.");
-            input();
-        }
+//
+////        PROBANDO LOOKUPLEADID
+//
+//        List<String> inputArray = new ArrayList<>(List.of(userInput.trim().split(" ")));
+//        String inputFirstPart = inputArray.get(0) + inputArray.get(1);
+//        int id;
+//        System.out.println(inputFirstPart);
+////        if (Integer.parseInt(inputArray.get(inputArray.size() - 1)))
+//        try{
+//            id = Integer.parseInt(inputArray.get(inputArray.size() - 1));
+//        } catch (IllegalArgumentException e){
+//            System.err.println("Wrong ID format. Try again.");
+//            input();
+//        }
 //        String upperCaseInput = userInput.toUpperCase().replace(" ", "");
-        return inputFirstPart.toUpperCase();
+//        return inputFirstPart.toUpperCase();
+        return userInput;
     }
 }
