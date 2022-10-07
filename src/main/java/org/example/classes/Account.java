@@ -69,7 +69,7 @@ public class Account {
 
 
     public static void addAccount() throws InterruptedException {
-
+        System.out.println(Account.accountContactList.size());
         Account account = new Account();
         Integer id;
 
@@ -129,7 +129,6 @@ public class Account {
                     " | Interested Units: " + opportunity.getQuantity() + " }\n");
             System.out.println("====================");
         }
-
         accountList.add(account);
 
         navigate();
@@ -147,7 +146,7 @@ public class Account {
 
         System.out.println("\nCONTACTS OF THE ACCOUNT\n===================");
         for (Contact contact : accountContactList){
-            System.out.println("Contact { " + contact.getId() + " | Name: " + contact.getName() + " | Phone: " +
+            System.out.println("Name: " + contact.getName() + " | Phone: " +
                     contact.getPhoneNumber() + " | Email: " + contact.getEmailAddress() + " | Company Name: " +
                     contact.getCompanyName() + " }");
             System.out.println("====================");

@@ -31,7 +31,7 @@ public class Lead {
         lead.setEmailAddress(Navigate.input());
         System.out.print("- Introduce a Company Name: ");
         lead.setCompanyName(Navigate.input());
-        lead.setId(leadList.size());
+        lead.setId(leadList.size() + 1);
 
         leadList.add(lead);
         System.out.println("\nThe new " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " is created correctly.");
@@ -62,6 +62,8 @@ public class Lead {
     }
 
     public static void convert() throws InterruptedException {
+
+        System.out.println(Account.accountContactList.size());
 
         Opportunity.addOpportunity();
 

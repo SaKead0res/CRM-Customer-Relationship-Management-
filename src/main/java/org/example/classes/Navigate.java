@@ -10,7 +10,8 @@ public class Navigate {
 
     public static void navigate() throws InterruptedException {
 
-        System.out.print("Please, enter a command: ");
+        System.out.print("Please, enter a command: " + Account.accountContactList.size());
+
 
         Commands command = null;
         try {

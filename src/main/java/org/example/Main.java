@@ -1,15 +1,13 @@
 package org.example;
 
-import org.example.classes.Contact;
-import org.example.classes.Lead;
-import org.example.classes.Navigate;
-import org.example.classes.Opportunity;
+import org.example.classes.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+
         Lead lead1 = new Lead("Julia Roberts", "+34 56436546", "julia.r@hotmail.com", "Movistar");
         Lead lead2 = new Lead("George Clooney", "+41 78658554", "clooney.fckr@gmail.es", "Orange");
         Lead lead3 = new Lead("Susan Sarandon", "+38 97781234", "susan.sar@yahoo.net", "PepePhone");

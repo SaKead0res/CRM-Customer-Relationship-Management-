@@ -60,6 +60,8 @@ public class Opportunity {
 
     public static void addOpportunity() throws InterruptedException {
 
+        System.out.println(Account.accountContactList.size());
+
         Opportunity opportunity = new Opportunity();
         Integer id = null;
 
@@ -76,6 +78,12 @@ public class Opportunity {
             addOpportunity();
         }
         opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(id)));
+        System.out.println(Account.accountContactList.size());
+//        Contact accountContact = decisionMaker;
+//        accountContact.setId(Account.accountContactList.size());
+        System.out.println(decisionMaker.getId() + decisionMaker.getName());
+        decisionMaker.setId(Account.accountContactList.size());
+        System.out.println(decisionMaker.getId() + decisionMaker.getName());
         System.out.print("- Introduce the Interested Product:");
 
         Product product = null;
@@ -110,12 +118,15 @@ public class Opportunity {
         System.out.println("Opportunity {ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
                 " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
-        opportunity.setId(opportunityList.size());
+        opportunity.setId(opportunityList.size() + 1);
+
         opportunityList.add(opportunity);
-        for (Opportunity o : opportunityList){
-            System.out.println(o.getId());
-        }
+
         Account.accountOpportunityList.add(opportunity);
+
+
+
+        Account.accountContactList.add(decisionMaker);
 
         Account.addAccount();
 
