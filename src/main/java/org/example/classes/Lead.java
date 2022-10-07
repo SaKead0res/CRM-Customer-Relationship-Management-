@@ -31,6 +31,7 @@ public class Lead {
         lead.setEmailAddress(Navigate.input());
         System.out.print("- Introduce a Company Name: ");
         lead.setCompanyName(Navigate.input());
+        lead.setId(leadList.size());
 
         leadList.add(lead);
         System.out.println("\nThe new " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " is created correctly.");
