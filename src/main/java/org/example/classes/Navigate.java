@@ -9,8 +9,11 @@ import java.util.Scanner;
 public class Navigate {
 
     public static void navigate() throws InterruptedException {
-
+        System.out.print("{   LEADS: " + Lead.leadList.size() + "   } ");
+        System.out.print("{  OPPORTUNITIES " + Opportunity.opportunityList.size() + "  } ");
+        System.out.print("{  ACCOUNTS " + Account.accountList.size() + "  } \n");
         System.out.print("Please, enter a command: ");
+
 
         Commands command = null;
         try {
@@ -45,7 +48,8 @@ public class Navigate {
                 Opportunity.lookupOpportunity();
                 break;
             case CONVERT:
-                Lead.convert();
+
+                Account.addAccount();
                 break;
             case CLOSED_WON:
                 Opportunity.closedWon();

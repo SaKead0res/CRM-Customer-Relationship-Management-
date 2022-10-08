@@ -14,25 +14,33 @@ public class Opportunity {
     private int id;
     private Product product;
     private int quantity;
-    static Contact decisionMaker;
+    static String decisionMaker;
     private Status status;
     static List<Opportunity> opportunityList = new ArrayList<>(); // Los ID's no funcionan. Siempre son 0
-    public Opportunity(int id, Product product, int quantity, Contact decisionMaker, Status status) {
-        setId(id);
+
+
+
+    public Opportunity(Product product, int quantity, String decisionMaker, Status status) {
         this.product = product;
         this.quantity = quantity;
-        this.decisionMaker = decisionMaker;
+        setDecisionMaker(decisionMaker);
         this.status = status;
+        setId(id);
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Opportunity() {
+
+        setId(id);
     }
 
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = opportunityList.size();
-    }
+
     public Product getProduct() {
         return product;
     }
@@ -45,10 +53,10 @@ public class Opportunity {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    public Contact getDecisionMaker() {
+    public String getDecisionMaker() {
         return decisionMaker;
     }
-    public void setDecisionMaker(Contact decisionMaker) {
+    public void setDecisionMaker(String decisionMaker) {
         this.decisionMaker = decisionMaker;
     }
     public Status getStatus() {
@@ -58,24 +66,27 @@ public class Opportunity {
         this.status = status;
     }
 
-    public static void addOpportunity() throws InterruptedException {
+    public static Opportunity addOpportunity() throws InterruptedException {
 
         Opportunity opportunity = new Opportunity();
-        Integer id = null;
-
+//        Integer idOp = null;
+//
         Scanner input = new Scanner(System.in);
-        System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to convert:");
-
-        try {
-            id = Integer.parseInt( input.nextLine() );//esta funcion intenta dar a la variable command el valor de una String(input())
-//                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
-//                                                  clase Enum Commands.
-        } catch ( IllegalArgumentException e ) {
-            System.err.println( "Wrong ID format." );
-            TimeUnit.MILLISECONDS.sleep(1000);
-            addOpportunity();
-        }
-        opportunity.setDecisionMaker(Contact.createContact(Lead.leadList.get(id)));
+//        System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to convert:");
+//
+//        try {
+//            idOp = (Integer.parseInt(input.nextLine()));//esta funcion intenta dar a la variable command el valor de una String(input())
+////                                                  pero como es de clase Enum solo cogera el valor en caso de que exista en la
+////                                                  clase Enum Commands.
+//
+//        } catch ( IllegalArgumentException e ) {
+//            System.err.println( "Wrong ID format." );
+//            TimeUnit.MILLISECONDS.sleep(1000);
+//            addOpportunity();
+//        }
+//
+//
+        opportunity.setDecisionMaker(Lead.leadList.get(Lead.idOp).getName());
         System.out.print("- Introduce the Interested Product:");
 
         Product product = null;
@@ -108,13 +119,13 @@ public class Opportunity {
         opportunity.setStatus(Status.OPEN);
         System.out.println("\nThe new " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " is created correctly.");
         System.out.println("Opportunity {ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
-                " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                " | Decision Maker: " + decisionMaker + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
+
         opportunityList.add(opportunity);
-        Account.accountOpportunityList.add(opportunity);
+        opportunity.setId(opportunityList.indexOf(opportunity));
 
-        Account.addAccount();
-
+        return opportunity;
     }
 
     public static void closedWon() throws InterruptedException {
@@ -124,7 +135,7 @@ public class Opportunity {
         System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to CLOSE :");
         opportunityList.get(input.nextInt());
         opportunity.setStatus(Status.CLOSED_WON);
-        System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
+        System.out.println("Opportunity " + decisionMaker + " was " + opportunity.status + " succesfully.\n");
         navigate();
     }
 
@@ -135,7 +146,7 @@ public class Opportunity {
         System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to CLOSE :");
         opportunityList.get(input.nextInt());
         opportunity.setStatus(Status.CLOSED_LOST);
-        System.out.println("Opportunity " + decisionMaker.getName() + " was " + opportunity.status + " succesfully.\n");
+        System.out.println("Opportunity " + decisionMaker + " was " + opportunity.status + " succesfully.\n");
         navigate();
     }
 
@@ -146,7 +157,7 @@ public class Opportunity {
         System.out.print("- Introduce the " + (char)27 + "[33m" + "OPPORTUNITY" + (char)27 + "[0m" + " Id to LOOK: ");
         opportunityList.get(input.nextInt());
         System.out.println("{ID: " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
-                " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                " | Decision Maker: " + decisionMaker + " | Interested Product: " + opportunity.getProduct() +
                 " | Interested Units: " + opportunity.getQuantity() + " }\n");
         navigate();
     }
@@ -156,7 +167,7 @@ public class Opportunity {
         System.out.println("\nOPPORTUNITY LIST\n===================");
         for (Opportunity opportunity : opportunityList){
             System.out.println("Opportunity { " + opportunity.getId() + " | Status: " + opportunity.getStatus() +
-                    " | Decision Maker: " + decisionMaker.getName() + " | Interested Product: " + opportunity.getProduct() +
+                    " | Decision Maker: " + decisionMaker + " | Interested Product: " + opportunity.getProduct() +
                     " | Interested Units: " + opportunity.getQuantity() + " }");
             System.out.println("====================");
         }
