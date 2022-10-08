@@ -9,10 +9,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         Lead lead1 = new Lead("Julia Roberts", "+34 56436546", "julia.r@hotmail.com", "Movistar");
-        Lead lead2 = new Lead("George Clooney", "+41 78658554", "clooney.fckr@gmail.es", "Orange");
-        Lead lead3 = new Lead("Susan Sarandon", "+38 97781234", "susan.sar@yahoo.net", "PepePhone");
         Lead.leadList.add(lead1);
+        Lead lead2 = new Lead("George Clooney", "+41 78658554", "clooney.fckr@gmail.es", "Orange");
         Lead.leadList.add(lead2);
+        Lead lead3 = new Lead("Susan Sarandon", "+38 97781234", "susan.sar@yahoo.net", "PepePhone");
         Lead.leadList.add(lead3);
 
         System.out.println("Business " + (char)27 + "[35m" + "CRM DATA-BASE" + (char)27 + "[0m" + " Iniatiated:\n===========================");

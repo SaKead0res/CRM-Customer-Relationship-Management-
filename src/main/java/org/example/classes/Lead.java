@@ -5,6 +5,7 @@ import org.example.enums.Status;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import static org.example.classes.Navigate.input;
 import static org.example.classes.Navigate.navigate;
@@ -20,7 +21,7 @@ public class Lead {
     public static List<Lead> leadList = new ArrayList<>(); // Los ID's no funcionan. Siempre son 0
 
 
-    public static void addLead() throws InterruptedException {
+    public static Lead addLead() throws InterruptedException {
         Lead lead = new Lead();//Añadido junto con el constructor vacio porque sino lanzaba un error.
 
         System.out.print("- Introduce a Name: ");
@@ -31,19 +32,19 @@ public class Lead {
         lead.setEmailAddress(Navigate.input());
         System.out.print("- Introduce a Company Name: ");
         lead.setCompanyName(Navigate.input());
-        lead.setId(leadList.size() + 1);
 
         leadList.add(lead);
         System.out.println("\nThe new " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " is created correctly.");
         System.out.println("Lead { Id: " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
-        navigate();
+//        navigate();
+        return lead;
     }
 
     public static void showLeads(){
         System.out.println("\nLEAD LIST\n===================");
         for (Lead lead : leadList){
-            System.out.println("Lead { " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
+            System.out.println("Lead { " + Lead.leadList.indexOf(lead) + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                     " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }");
             System.out.println("====================");
         }
@@ -52,25 +53,36 @@ public class Lead {
 
     public static void lookupLead() throws InterruptedException {
 
-        Lead lead = new Lead();
         Scanner input = new Scanner(System.in);
+
         System.out.print("- Introduce the " + (char)27 + "[33m" + "LEAD" + (char)27 + "[0m" + " Id to LOOK: ");
-        leadList.get(input.nextInt());
-        System.out.println("Lead{ Id: " + lead.id + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
+
+        Lead lead = null;
+
+        try {
+            lead = leadList.get(input.nextInt());
+
+        } catch (IllegalArgumentException e){
+            System.err.println("Wrong ID format.");
+            TimeUnit.MILLISECONDS.sleep(1000);
+            lookupLead();
+        }
+
+        System.out.println("Lead{ Id: " + Lead.leadList.indexOf(lead) + " | Name: " + lead.name + " | Phone: " + lead.phoneNumber +
                 " | Email: " + lead.emailAddress + " | Company Name: " + lead.companyName + " }\n");
         navigate();
     }
 
     public static void convert() throws InterruptedException {
-
-        System.out.println(Account.accountContactList.size());
-
-        Opportunity.addOpportunity();
+//SE PUEDE AHORRAR UN METODO
+        Account.addAccount(Opportunity.addOpportunity());
+        Lead.leadList.remove(Lead.leadList.get(Opportunity.inputId));
+        navigate();
 
     }
 
     public Lead(String name, String phoneNumber, String emailAddress, String companyName) {
-        setId(getId());
+        setId(id);
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
@@ -78,6 +90,7 @@ public class Lead {
     }
 
     public Lead() {
+        setId(id);
     }
 
     public int getId() {

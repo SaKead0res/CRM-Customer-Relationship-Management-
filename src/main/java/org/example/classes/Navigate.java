@@ -5,13 +5,17 @@ import org.example.enums.Commands;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Navigate {
 
     public static void navigate() throws InterruptedException {
 
-        System.out.print("Please, enter a command: " + Account.accountContactList.size());
+        System.out.print("{  LEADS : " + Lead.leadList.size() + "    } ");
+        System.out.print("{ OPPORTUNITIES : " + Opportunity.opportunityList.size() + " } ");
+        System.out.println("{  ACCOUNTS : " + Account.accountList.size() + "   } ");
 
+        System.out.print("Please, enter a command: ");
 
         Commands command = null;
         try {
@@ -20,6 +24,7 @@ public class Navigate {
 //                                                  clase Enum Commands.
         } catch ( IllegalArgumentException e ) {
             System.err.println( "This command doesn't exists. Try again or type <help>." );
+            TimeUnit.MILLISECONDS.sleep(1000);
             navigate();
         }
 
@@ -102,6 +107,6 @@ public class Navigate {
 //        }
 //        String upperCaseInput = userInput.toUpperCase().replace(" ", "");
 //        return inputFirstPart.toUpperCase();
-        return userInput.toUpperCase();
+        return userInput.replace(" ","").toUpperCase();
     }
 }

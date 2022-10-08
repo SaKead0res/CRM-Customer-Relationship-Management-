@@ -21,7 +21,8 @@ public class Contact extends Lead {
         contact.setPhoneNumber(lead.getPhoneNumber());
         contact.setEmailAddress(lead.getEmailAddress());
         contact.setCompanyName(lead.getCompanyName());
-        Lead.leadList.remove(lead.getId());
+
+//        Account.accountContactList.add(contact);
 
         return contact;
     }
