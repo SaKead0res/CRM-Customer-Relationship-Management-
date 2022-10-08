@@ -22,6 +22,7 @@ public class Contact extends Lead {
         contact.setEmailAddress(lead.getEmailAddress());
         contact.setCompanyName(lead.getCompanyName());
 
+//        Account.accountContactList.add(contact);
 
         return contact;
     }
